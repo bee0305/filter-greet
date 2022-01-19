@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+{% block content %}
+    <h2>List of prods</h2>
+    <div class="wrap">
+        <form action=".">
+            {{ filter.form.as_p }}
+            <button type="submit" class="btn btn-success">Search</button>
+        </form>
+    {% comment %}
+        <form action="#" method="GET">
+            {{ filter.form.title|bootstrap_horizontal:'col-lg-4' }}
+            <button type="submit" class="btn btn-success">Search</button>
+
+        </form>
+        {% endcomment %}
+        <hr>
+
+    </div>
+
+    <div>
+        {% for prod in filter.qs %}
+            <h5>Product {{prod.title}}</h5>
+            <p>Price: <strong>{{prod.price}}</strong></p>
+            <p>UNID: {{prod.unid}}</p>
+
+            <a href="{% url 'prods:detail' prod.unid %}">See more detail</a>
+                <hr>
+        {% endfor %}
+    </div>
+
+{% endblock %}

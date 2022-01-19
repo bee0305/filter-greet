@@ -1,0 +1,13 @@
+asgiref==3.4.1
+Django==4.0.1
+django-admin-filter==0.7
+django-admin-rangefilter==0.8.3
+django-autoslug==1.9.8
+django-bootstrap-form==3.4
+django-environ==0.8.1
+django-filter==21.1
+django-js-asset==1.2.2
+django-mptt==0.12.0
+psycopg2-binary==2.9.1
+sqlparse==0.4.2
+tzdata==2021.5

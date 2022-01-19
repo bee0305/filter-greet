@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+{% block content %}
+    <h2 class="marg-top">List of notes</h2>
+    <div>
+        <h5>Filter Notes Form</h5>
+        <div class="marg-top">
+            <form action="" class="form-main">
+                {{filter.form.as_p}}
+                <input type="submit" value="Filter">
+            </form>
+        </div>
+    </div>
+{% comment %}
+
+{#    <table border="1" style="border-collapse: collapse" class="marg-top tabl">#}
+{#        <thead>#}
+{#        <tr>#}
+{#            <th>N</th>#}
+{#            <th>Note Title</th>#}
+{#            <th>Writer</th>#}
+{#            <th>Note Status</th>#}
+{#            <th>Total Notes written by corresp writer</th>#}
+{#        </tr>#}
+{#        </thead>#}
+{##}
+{#        <tbody>#}
+{#        {% for note in notes.qs %}#}
+{#            <tr>#}
+{#                <td>{{forloop.counter}}</td>#}
+{#                <td>{{note.title}}</td>#}
+{#                <td>ID: ({{note.writer.id}}) <strong>{{note.writer}}</strong></td>#}
+{#                <td>{{note.get_status_display}}</td>#}
+{#                <td>{{note.writer.get_notes_count}}</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
+{% endcomment %}
+    <div class="container">
+    <div class="row">
+        {% for note in notes %}
+            {{ note.title }}
+        {% endfor %}
+    </div>
+    </div>
+    <div class="pagination">
+{#TODO: fix pagination#}
+    {% if filter.qs %}
+        <div>
+        <strong>{{ page_obj }}</strong>
+        </div>
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if num == page_obj.number %}
+                <li><a href="#" class="active">{{num}}</a></li>
+
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3'%}
+                <li><a href="?page={{num}}">{{num}}</a></li>
+            {% endif %}
+
+        {% endfor %}
+    {% else %}
+        <p>No filter? Next not found</p>
+    {% endif %}
+
+    </div>
+
+
+{% endblock %}

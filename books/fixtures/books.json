@@ -1,0 +1,174 @@
+[
+{
+    "model": "books.author",
+    "pk": 1,
+    "fields": {
+        "name": "Tuve Jansson"
+    }
+},
+{
+    "model": "books.author",
+    "pk": 2,
+    "fields": {
+        "name": "Astrid Lindgren"
+    }
+},
+{
+    "model": "books.author",
+    "pk": 3,
+    "fields": {
+        "name": "Alex Pushkin"
+    }
+},
+{
+    "model": "books.author",
+    "pk": 4,
+    "fields": {
+        "name": "Jerald Darrel"
+    }
+},
+{
+    "model": "books.book",
+    "pk": 1,
+    "fields": {
+        "created_at": "2022-01-17T09:04:59.389Z",
+        "updated_at": "2022-01-17T18:00:29.370Z",
+        "author": 1,
+        "title": "Trolls",
+        "slug": "trolls",
+        "lead_text": "about mummy trolls",
+        "view_count": 0,
+        "featured": false,
+        "price": "120.00",
+        "avg_rate": "4.00",
+        "an_likes": 2,
+        "max_rating": "5.00"
+    }
+},
+{
+    "model": "books.book",
+    "pk": 2,
+    "fields": {
+        "created_at": "2022-01-17T09:05:14.285Z",
+        "updated_at": "2022-01-17T18:00:07.692Z",
+        "author": 2,
+        "title": "Carlson",
+        "slug": "karlson",
+        "lead_text": "for children",
+        "view_count": 0,
+        "featured": false,
+        "price": "30.00",
+        "avg_rate": "2.00",
+        "an_likes": 1,
+        "max_rating": "2.00"
+    }
+},
+{
+    "model": "books.book",
+    "pk": 3,
+    "fields": {
+        "created_at": "2022-01-17T09:05:30.167Z",
+        "updated_at": "2022-01-17T17:59:46.896Z",
+        "author": 3,
+        "title": "Onegin",
+        "slug": "onegin",
+        "lead_text": "poetry",
+        "view_count": 0,
+        "featured": false,
+        "price": "10.00",
+        "avg_rate": "2.50",
+        "an_likes": 1,
+        "max_rating": "4.00"
+    }
+},
+{
+    "model": "books.book",
+    "pk": 4,
+    "fields": {
+        "created_at": "2022-01-17T09:05:44.440Z",
+        "updated_at": "2022-01-17T17:59:23.234Z",
+        "author": 4,
+        "title": "Animals",
+        "slug": "animals",
+        "lead_text": "about animals",
+        "view_count": 0,
+        "featured": false,
+        "price": "20.00",
+        "avg_rate": null,
+        "an_likes": null,
+        "max_rating": null
+    }
+},
+{
+    "model": "books.userbookrelation",
+    "pk": 1,
+    "fields": {
+        "user": 4,
+        "book": 3,
+        "like": false,
+        "dislike": false,
+        "in_bookmark": false,
+        "rating": 1
+    }
+},
+{
+    "model": "books.userbookrelation",
+    "pk": 2,
+    "fields": {
+        "user": 1,
+        "book": 3,
+        "like": true,
+        "dislike": false,
+        "in_bookmark": true,
+        "rating": 4
+    }
+},
+{
+    "model": "books.userbookrelation",
+    "pk": 3,
+    "fields": {
+        "user": 2,
+        "book": 1,
+        "like": true,
+        "dislike": false,
+        "in_bookmark": false,
+        "rating": 5
+    }
+},
+{
+    "model": "books.userbookrelation",
+    "pk": 4,
+    "fields": {
+        "user": 3,
+        "book": 1,
+        "like": true,
+        "dislike": false,
+        "in_bookmark": false,
+        "rating": 3
+    }
+},
+{
+    "model": "books.userbookrelation",
+    "pk": 5,
+    "fields": {
+        "user": 2,
+        "book": 2,
+        "like": false,
+        "dislike": false,
+        "in_bookmark": false,
+        "rating": 2
+    }
+},
+{
+    "model": "books.userbookrelation",
+    "pk": 6,
+    "fields": {
+        "user": 2,
+        "book": 2,
+        "like": true,
+        "dislike": false,
+        "in_bookmark": false,
+        "rating": null
+    }
+}
+]

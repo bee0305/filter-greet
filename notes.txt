@@ -1,0 +1,112 @@
+Project sandbox for django-filters for cbv
+apps:
+1. products: test packages django-filters; django-admin-filter==0.7
+
+###############################################################
+Bug fixed postgres desc null last ( but not very clear why)
+###############################################################
+    def filter_by_avg_rating(self, queryset, name, value):
+        return queryset.order_by(F('avg_rate').desc(nulls_last=True)) \
+            if value == 'descending' else queryset.order_by('avg_rate')
+2. reviews (admin): test package django-admin-rangefilter==0.8.3
+3. books: test packages django-filters;
+
+TODO: front reset (clear) input fields for filter
+
+==============
+General:
+=============
+filter.py
+-------------
+By doing MyClassFilter(request.GET) you'll get access to the following attrs:
+    '''
+    base_filters
+    data
+    declared_filters
+    errors
+    filter_for_field
+    filter_for_lookup
+    filter_queryset
+    filters
+    ----
+    form
+    ---
+    form_prefix
+    get_fields
+    get_filter_name
+    get_filters
+    get_form_class
+    is_bound
+    is_valid
+    -----
+    qs
+    ----
+    queryset
+    request
+
+'base_filters', 'count_total_writer', 'data',
+'declared_filters', 'errors', 'filter_for_field',
+'filter_for_lookup', 'filter_queryset', 'filters',
+'form', 'form_prefix', 'get_fields', 'get_filter_name',
+'get_filters', 'get_form_class', 'is_bound', 'is_valid',
+'qs', 'queryset', 'request', 'request_data', 'sort_by_writer', 'writer_sort_notes_by']
+    '''
+Details:
+A.
+     lookups = list
+     lookups = dict
+B. FK ( set them NOT in 'fields'; make a separ record
+    #                                                     attr-this model__ attr via FK(writer name)
+    writer = df.CharFilter(label="Writer Name",field_name="writer__name" , lookup_expr='icontains')
+
+C. Possible to send pre-filled input's as initials (views) be careful: if you really need it
+from django.http import QueryDict
+def get_queryset(self):
+        """
+        send front initials for some input's
+        :return:
+        """
+        print(self.request.GET)
+        print(type(self.request.GET))
+        print(len(self.request.GET))
+        initial_data = {
+            'sort_notes_by_abc': 'ASC',
+            'number_notes': 1,
+            'writer_sort_notes_by': 'GREATER_THAN',
+
+        }
+        query_dict = QueryDict('', mutable=True)
+        query_dict.update(initial_data)
+        if len(self.request.GET) == 0:
+            print('qs len is zero')
+            query_dict = self.request.GET
+        notes = NoteFilter(query_dict)
+        # GET /notes/?title__icontains=&status=&number_notes=3&sort_notes_by_abc=ASC HTTP/1.1
+
+        return notes
+D. Form object:
+    'add_prefix', 'as_p', 'as_table',
+    'base_fields', 'changed_data',
+    'clean', 'data',
+    'error_class',
+    'errors',
+    'field_order',
+    'fields', 'files', 'full_clean',
+    'get_context',
+    'get_initial_for_field', 'has_changed',
+    'has_error', 'hidden_fields',
+    'initial',
+    'is_bound', 'is_multipart',
+    'is_valid',
+    'label_suffix', 'media', 'non_field_errors',
+    'order_fields', 'prefix', 'render', 'renderer',
+    'visible_fields'
+
+form.initial = dict
+'clear', 'copy', 'fromkeys', 'get',
+'items', 'keys', 'pop', 'popitem',
+'setdefault', 'update', 'values']
+
+F.
+in set
+Article.objects.filter(Q(reporter__first_name='John'), Q(reporter__last_name='Smith'))

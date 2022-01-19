@@ -1,0 +1,17 @@
+body{
+    background-color: blanchedalmond;
+}
+.wrap{
+    width:80%;
+    margin-top: 3rem;
+    margin: auto;
+}
+.marg-top{
+    margin-top: 4rem;
+    background-color: burlywood;
+    padding:2rem;
+
+}
+.tabl{
+    width:100%;
+}
